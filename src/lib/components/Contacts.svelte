@@ -1,5 +1,5 @@
 <script>
-  import {Card, Field, Input} from 'svelte-chota';
+  import {Card, Field} from 'svelte-chota';
   import { contacts } from '../stores';
   import ContactsTable from './ContactsTable.svelte';
   import { parse } from 'csv-parse/browser/esm/sync';
@@ -24,7 +24,7 @@
 <ContactsTable contacts={$contacts} />
 
 <Field label="Upload csv:">
-<Input
+<input
 	accept="text/csv"
 	bind:files
 	type="file"
