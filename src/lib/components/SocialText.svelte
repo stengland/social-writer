@@ -5,13 +5,12 @@
 
   function mentionReplace(text, social) {
     let newText = text;
-    $contacts.forEach((contact) => {
-        const newAddress = contact[social];
-        if (newAddress) {
-          newText = newText.replace(contact.key, newAddress);
-        }
+    for (let [key, contact] of Object.entries($contacts)) {
+      const newAddress = contact[social];
+      if (newAddress) {
+        newText = newText.replace(key, newAddress);
       }
-    );
+    };
     return newText;
   }
 </script>

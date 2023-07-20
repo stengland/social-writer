@@ -13,7 +13,11 @@
 			  columns: true,
 			  skip_empty_lines: true
 			});
-			$contacts = rows;
+			let newContacts = {};
+			rows.forEach((row) => {
+				newContacts[row.fediverse] = row;
+			});
+			$contacts = newContacts;
 		});
 	}
 </script>
@@ -21,7 +25,7 @@
 <Card>
 <h2 slot="header">Contacts</h2>
 
-<ContactsTable contacts={$contacts} />
+<ContactsTable/>
 
 <Field label="Upload csv:">
 <input

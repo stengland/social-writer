@@ -1,25 +1,35 @@
 <script>
-  export let contacts;
+  import { contacts } from '../stores';
+	let table = [];
+
+  const updateTable = (contacts) => {
+    table = [];
+    for (let [key, contact] of Object.entries(contacts)) {
+      contact.key = key;
+      table.push(contact)
+    };
+  }
+
+  $: updateTable($contacts);
+
 </script>
 
 <table>
   <thead>
   <tr>
-  <th>Key</th>
+  <th>Fediverse</th>
   <th>Twitter</th>
   <th>Facebook</th>
   <th>Instagram</th>
-  <th>Fediverse</th>
   </tr>
   </thead>
   <tbody>
-{#each contacts as contact}
+{#each table as contact}
   <tr>
 <td>{contact.key}</td>
 <td>{contact.twitter}</td>
 <td>{contact.facebook}</td>
 <td>{contact.instagram}</td>
-<td>{contact.fediverse}</td>
   </tr>
 {/each}
   </tbody>
